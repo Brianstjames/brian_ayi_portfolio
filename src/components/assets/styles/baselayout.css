@@ -1,0 +1,51 @@
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    background-image: url('https://g.foolcdn.com/editorial/images/711961/1-blue-semiconductor-computer-chip.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding: 24px;
+ }
+
+   h1 {
+    color: white;
+    margin-left: 20px
+}
+
+.jay {
+ color: white;
+}
+
+.red {
+    color: red
+}
+
+p {
+    color: white;
+    margin: 0px;
+    text-align: center;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+input, textarea, button {
+    margin: 4px 0;
+    padding: 8px;
+}
+
+
+
+
+    
+
+
