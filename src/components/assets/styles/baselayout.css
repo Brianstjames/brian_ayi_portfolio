@@ -1,47 +1,61 @@
 
-body {
-    margin: 0;
-    display: flex;
-    justify-content: center; 
-    background-image: url('https://g.foolcdn.com/editorial/images/711961/1-blue-semiconductor-computer-chip.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    padding: 24px;
- }
+.profile-picture {
+    width: 200px;
+    border-radius: 50%;
+  }
 
-   h1 {
-    color: white;
-    margin-left: 20px
-}
+  .portfolio {
+    background-color: fuchsia;
+  }
+/* 
+  .contact {
+    background-color: blanchedalmond;
+  }
 
-.jay {
- color: white;
-}
+  #contact-form {
+    background-color: #ff0000;
+  } */
 
-.red {
-    color: red
-}
+  /* contact page */
+  .purple-background {
+    background-color: purple;
+  }
+  
 
-p {
-    color: white;
-    margin: 0px;
-    text-align: center;
-}
+  
+  /* about component styling */
+  .intro {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .title {
+    font-style: italic;
+  }
+  
+  .location {
+    font-style: italic;
+  }
+  
+  .contact {
+    font-style: italic;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', sans-serif;
-    font-size: 20px;
-    box-sizing: border-box;
-}
-
-input, textarea, button {
-    margin: 4px 0;
-    padding: 8px;
-}
 
 
 

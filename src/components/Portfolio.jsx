@@ -1,11 +1,16 @@
-
-import React from 'react'
+import React from 'react';
 
 export default function Portfolio() {
   return (
-    <div>
+    <div className='portfolio'>
       <h1>Portfolio</h1>
-      <p>Pictures and links to github go here</p>
+      {/* <img src={myImage} alt="description of image" /> */}
+      <p>Links to my GitHub repositories:</p>
+      <ul>
+        <li><a href="https://github.com/EthanTPowell/peanut-gallery.git">Repository 1</a></li>
+        <li><a href="https://github.com/cchat44/JokesProject.git">Repository 2</a></li>
+      </ul>
     </div>
-  )
+  );
 }
+

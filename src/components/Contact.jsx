@@ -1,50 +1,111 @@
 import React, { useState } from 'react'
 import emailjs from 'emailjs-com'
-import { Container, Row, Col } from "react-bootstrap";
-import { containerConfig } from "../"
+import { Form, FormControl, Button } from 'react-bootstrap'
 
-const Contact = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [emailSent, setEmailSent] = useState(false);
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
 
-    const submit = () => {
-        if (name && email && message) {
-            const serviceId = 'service_id';
-            const templateId = 'template_id';
-            const userId = 'user_id';
-            const templateParams = {
-                name,
-                email,
-                message
-            };
+  const [formStatus, setFormStatus] = useState({
+    success: false,
+    error: false
+  })
 
-            emailjs.send(serviceId, templateId, templateParams, userId)
-                .then(response => console.log(response))
-                .then(error => console.log(error));
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
 
-            setName('');
-            setEmail('');
-            setMessage('');
-            setEmailSent(true);
-        } else {
-            alert('Please fill in all fields.');
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    emailjs
+      .sendForm(
+        'YOUR_SERVICE_ID', 
+        'YOUR_TEMPLATE_ID',
+        event.target,
+        'YOUR_USER_ID'
+      )
+      .then(
+        (result) => {
+          setFormStatus({
+            success: true,
+            error: false
+          })
+          resetForm()
+        },
+        (error) => {
+          setFormStatus({
+            success: false,
+            error: true
+          })
         }
-    }
+      )
+  }
 
-    return (
-      <container>
-        <div id="contact-form">
-            <input type="text" placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} />
-            <input type="email" placeholder="Your email address" value={email} onChange={e => setEmail(e.target.value)} />
-            <input type="placeholder" placeholder="Your message" value={message} onChange={e => setMessage(e.target.value)}></input>
-            <button onClick={submit}>Send Message</button>
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    })
+  }
 
-            <span className={emailSent ? 'visible' : null}><p>Thank you for your message, we will be in touch soon!</p></span>
-        </div>
-      </container>
-    );
-};
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Name</Form.Label>
+        <Form.Control
+          size="sm"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          style={{ width: '200px' }}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          size="sm"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          style={{ width: '200px' }}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Message</Form.Label>
+        <Form.Control
+          size="sm"
+          as="textarea"
+          rows="3"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          style={{ width: '200px' }}
+        />
+      </Form.Group>
+      {formStatus.success && (
+        <p>Your message was sent successfully!</p>
+      )}
+      {formStatus.error && (
+        <p>An error occurred while sending your message.</p>
+      )}
+      <Button variant="primary" type="submit">
+        Send
+      </Button>
+    </Form>
+  )
+}
 
-export default Contact;
+export default ContactForm
+
+
+
