@@ -9,6 +9,9 @@ function AboutMe() {
         <p className="title">Junior Software Developer</p>
         <p className="location">Atlanta, GA</p>
         <p className="contact">404.441.5880 | stjamess77@gmail.com</p>
+        <ul>
+         <li><a href="https://www.linkedin.com/in/brian-ayiteyfio-bb6a29255/">LinkedIn</a></li>
+        </ul>
       </div>
       <h1 className="section-title">About Me</h1>
       <img src={components} alt="description of image" className="profile-picture" />
